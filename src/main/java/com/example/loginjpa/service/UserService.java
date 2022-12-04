@@ -1,6 +1,8 @@
 package com.example.loginjpa.service;
 
 import com.example.loginjpa.domain.User;
+import com.example.loginjpa.exception.AppException;
+import com.example.loginjpa.exception.ErrorCode;
 import com.example.loginjpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +18,7 @@ public class UserService {
         //중복 체크
         userRepository.findByUserName(userName)
                 .ifPresent(user -> {
-                    throw new RuntimeException(userName+"은 이미 있습니다.");
+                    throw new AppException(ErrorCode.USERNAME_DUPLICATED, userName + "은 이미 있습니다.");
                 });
 
         //저장
