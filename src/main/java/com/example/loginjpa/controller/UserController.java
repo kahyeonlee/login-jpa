@@ -1,12 +1,10 @@
 package com.example.loginjpa.controller;
 
+import com.example.loginjpa.domain.dto.UserLoginRequest;
 import com.example.loginjpa.domain.dto.UserJoinRequest;
-import com.example.loginjpa.domain.dto.UserJoinResponse;
 import com.example.loginjpa.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +20,10 @@ public class UserController {
     public ResponseEntity<String> join(@RequestBody UserJoinRequest dto) {
         userService.join(dto.getUserName(), dto.getPassword());
         return ResponseEntity.ok().body("등록이 성공하였습니다.");
+    }
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody UserLoginRequest dto) {
+        String token = userService.login(dto.getUserName(), dto.getPassword());
+        return ResponseEntity.ok().body(token);
     }
 }
