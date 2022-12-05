@@ -15,7 +15,7 @@ public class JwtTokenUtil {
                 .setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis())) //만든 날짜
                 .setExpiration(new Date(System.currentTimeMillis()+expireTimeMs))//끝나는 날짜
-                .signWith(SignatureAlgorithm.PS256,key)
+                .signWith(SignatureAlgorithm.HS256,key)
                 .compact();
 
     }
