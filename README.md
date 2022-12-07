@@ -47,7 +47,8 @@
 #### 기능 정의
     - 로그인 한 사용자가 본인이 방문한 병원에 어떤 증상으로 방문 했는지 진료비는 얼마였는지를 기록
     - 전체, 특정 user, 특정 병원 별로 방문 기록을 조회
-#### 엔티티 다이어그램
+#### Entity Diagram
+![다이어그램](https://user-images.githubusercontent.com/114658792/206084579-b4467589-a985-4229-84e2-3b1b72c0abc9.png)
 
 
 #### 1. create기능(POST /api/v1/visits)
