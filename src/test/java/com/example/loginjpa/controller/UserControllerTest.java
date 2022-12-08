@@ -46,11 +46,13 @@ class UserControllerTest {
 
         String userName = "hi";
         String password = "123456";
+        String email = "kahyun@gmail.com";
+
 
         mockMvc.perform(post("/api/v1/users/join")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password))))
+                        .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password,email))))
                 .andDo(print()) //요청, 응답 전체메세지 확인
                 .andExpect(status().isOk());
 
@@ -63,6 +65,7 @@ class UserControllerTest {
     void join_fail() throws Exception {
         String userName = "hi";
         String password = "123456";
+        String email = "kahyun@gmail.com";
 
         when(userService.join(any(), any()))
                 .thenThrow(new RuntimeException("해당 userId가 중복됩니다."));
@@ -70,7 +73,7 @@ class UserControllerTest {
         mockMvc.perform(post("/api/v1/users/join")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password))))
+                        .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password,email))))
                 .andDo(print()) //요청, 응답 전체메세지 확인
                 .andExpect(status().isConflict());
 

@@ -3,9 +3,9 @@ package com.example.loginjpa.exception;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
-public class AppException extends RuntimeException{
+@AllArgsConstructor
+public class HospitalReviewAppException extends RuntimeException{
     private ErrorCode errorCode;
     private String message;
 
@@ -14,6 +14,5 @@ public class AppException extends RuntimeException{
         if(message == null) return errorCode.getMessage();
         return String.format("%s. %s", errorCode.getMessage(), message);
     }
-
 
 }

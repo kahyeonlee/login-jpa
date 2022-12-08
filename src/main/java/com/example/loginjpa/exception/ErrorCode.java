@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
     USERNAME_DUPLICATED(HttpStatus.CONFLICT, ""),
     INVALID_PASSWORD(HttpStatus.UNAUTHORIZED, ""),
-    USERNAME_NOT_FOUND(HttpStatus.NOT_FOUND, "");
+    USERNAME_NOT_FOUND(HttpStatus.NOT_FOUND, ""),
+    NOT_FOUNDED(HttpStatus.NOT_FOUND,""),
+    USER_NOT_FOUNDED(HttpStatus.NOT_FOUND,"");
+
 
     private HttpStatus httpStatus;
 
