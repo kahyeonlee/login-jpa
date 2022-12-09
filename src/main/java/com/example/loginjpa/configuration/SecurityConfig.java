@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .csrf().disable() //cross site
                 .cors().and() // cross site 에서 도메인이 다를때
                 .authorizeRequests()
-                .antMatchers("/api/v1/users/join","api/v1/users/login").permitAll()
+                .antMatchers("/api/v1/users/join","/api/v1/users/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/**").authenticated()
                 .and()
                 .sessionManagement()
